@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fondazione Clementina De Virgiliis — Costruire comunità che curano</title>
+<meta name="description" content="Fondazione abruzzese nata nel 1987 da un lascito testamentario. Lavoriamo contro l'isolamento con servizi socio-sanitari, percorsi formativi e iniziative culturali.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Fondazione Clementina De Virgiliis — prova di homepage
+   Palette e forme derivate dalle slide istituzionali.
+   Regola: su fondi chiari il testo è sempre nero caldo.
+   ============================================================ */
+
+:root{
+  --crema:#FDF4EC;
+  --rosa:#FCE4DE;
+  --pesca:#EBA595;
+  --terra:#C99486;
+  --verde:#7A9E1E;
+  --verde-chiaro:#A8C64A;
+  --azzurro:#B7DFF5;
+  --nero:#1A1614;
+  --nero-70:#5C5049;
+  --misura:66ch;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',system-ui,sans-serif;
+  font-size:18px;          /* minimo non negoziabile */
+  line-height:1.62;
+  color:var(--nero);
+  background:var(--crema);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:'Bodoni Moda',Georgia,serif;font-weight:400;line-height:1.14}
+p{max-width:var(--misura)}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+.wrap{width:min(1120px,92vw);margin-inline:auto}
+section{padding:clamp(56px,9vw,110px) 0}
+
+/* ---------- forma firma: l'arco ---------- */
+.arco{border-radius:999px 999px 6px 6px;overflow:hidden}
+
+/* ---------- navigazione ---------- */
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(253,244,236,.94);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid rgba(26,22,20,.09);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 0}
+.marchio{font-family:'Bodoni Moda',serif;font-size:19px;line-height:1.2;letter-spacing:.01em;text-decoration:none}
+.marchio span{display:block;font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--nero-70)}
+.menu{display:flex;gap:26px;list-style:none;font-size:15px}
+.menu a{text-decoration:none;padding:6px 0;border-bottom:1.5px solid transparent}
+.menu a:hover,.menu a:focus-visible{border-bottom-color:var(--pesca)}
+
+/* ---------- pulsanti ---------- */
+.btn{
+  display:inline-block;font-size:16px;font-weight:500;
+  padding:14px 26px;text-decoration:none;border:1.5px solid var(--nero);
+  background:var(--nero);color:var(--crema);
+}
+.btn:hover{background:transparent;color:var(--nero)}
+.btn--vuoto{background:transparent;color:var(--nero)}
+.btn--vuoto:hover{background:var(--nero);color:var(--crema)}
+:focus-visible{outline:3px solid var(--nero);outline-offset:3px}
+
+/* ---------- hero ---------- */
+.hero{background:var(--rosa);padding-top:clamp(40px,6vw,72px)}
+.hero .griglia{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(40px,6.2vw,68px);letter-spacing:-.015em}
+.occhiello{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#7C5F57;font-weight:500;margin-bottom:18px}
+.hero p{margin:22px 0 30px;font-size:19px}
+.azioni{display:flex;gap:14px;flex-wrap:wrap}
+
+/* il paesaggio dentro l'arco: unico elemento illustrativo del sito */
+.paesaggio{width:min(100%,420px);aspect-ratio:3/4;margin-inline:auto}
+
+/* ---------- blocchi di contenuto ---------- */
+.etichetta{
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:600;color:#8A5C4E;margin-bottom:18px;
+}
+h2{font-size:clamp(28px,3.6vw,40px);margin-bottom:22px}
+h3{font-size:24px;margin-bottom:10px}
+.due{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,56px)}
+.link-avanti{display:inline-block;margin-top:16px;font-size:16px;font-weight:500;text-decoration:none;border-bottom:1.5px solid var(--pesca);padding-bottom:2px}
+.link-avanti:hover{border-bottom-color:var(--nero)}
+
+/* ---------- progetti ---------- */
+.progetti{background:var(--terra)}      /* testo nero: contrasto 6,9:1 */
+.scheda .foto{aspect-ratio:4/5;background:var(--crema);margin-bottom:20px;
+  display:grid;place-items:center;text-align:center;padding:24px}
+.scheda .foto span{font-size:14px;color:var(--nero-70);max-width:24ch}
+
+/* ---------- storia ---------- */
+.storia{background:var(--crema);text-align:center}
+.storia p{margin-inline:auto;font-size:20px}
+
+/* ---------- sostienici ---------- */
+.sostienici{background:var(--rosa)}
+.cf{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  background:var(--crema);padding:22px 26px;margin:26px 0 0;width:fit-content;
+}
+.cf strong{font-size:30px;letter-spacing:.06em;font-weight:500;font-family:'Bodoni Moda',serif}
+.copia{font:inherit;font-size:15px;cursor:pointer;background:var(--nero);color:var(--crema);border:1.5px solid var(--nero);padding:10px 18px}
+.copia:hover{background:transparent;color:var(--nero)}
+.esito{font-size:15px;color:#3F6B1E;min-height:1.2em}
+
+/* ---------- footer ---------- */
+footer{background:var(--pesca);padding:clamp(48px,6vw,76px) 0 28px}
+.recapiti{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:40px}
+.recapiti h3{font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.recapiti p{font-size:17px;word-break:break-word}
+.coda{border-top:1px solid rgba(26,22,20,.22);padding-top:22px;font-size:14px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.coda a{margin-right:18px}
+
+/* ---------- segnaposto dei dati mancanti ---------- */
+.dv{background:#FBD9CF;color:#7C3F2E;font-weight:500;padding:1px 6px;font-size:.92em;white-space:nowrap}
+.terra .dv{background:#F6D9D0}
+
+/* ---------- comparsa allo scroll ---------- */
+.appare{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.appare.visibile{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .appare{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* ---------- telefono ---------- */
+@media (max-width:860px){
+  .menu{display:none}
+  .hero .griglia,.due,.recapiti{grid-template-columns:1fr}
+  .paesaggio{order:-1;width:min(100%,300px)}
+  body{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav" aria-label="Principale">
+    <a class="marchio" href="#">Fondazione Clementina De&nbsp;Virgiliis<span>Ente del Terzo Settore</span></a>
+    <ul class="menu">
+      <li><a href="#chi-siamo">Chi siamo</a></li>
+      <li><a href="#storia">La nostra storia</a></li>
+      <li><a href="#progetti">Progetti</a></li>
+      <li><a href="#sostienici">Sostienici</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+    <a class="btn" href="#sostienici">Sostienici</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap griglia">
+    <div>
+      <p class="occhiello">Abruzzo · dal 1987</p>
+      <h1>Costruire comunità che curano</h1>
+      <p>Lavoriamo contro l'isolamento. Servizi socio-sanitari, percorsi formativi, iniziative culturali: mettiamo in dialogo cura, educazione e cultura per creare contesti in cui ognuno possa sentirsi accolto.</p>
+      <div class="azioni">
+        <a class="btn" href="#progetti">Scopri i progetti</a>
+        <a class="btn btn--vuoto" href="#sostienici">Sostienici</a>
+      </div>
+    </div>
+
+    <!-- il paesaggio ripreso dalle slide, dentro l'arco -->
+    <svg class="paesaggio arco" viewBox="0 0 300 400" role="img" aria-label="Illustrazione di una collina verde sotto un cielo azzurro con una nuvola">
+      <defs>
+        <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#B7DFF5"/>
+          <stop offset="1" stop-color="#F0FAFE"/>
+        </linearGradient>
+      </defs>
+      <rect width="300" height="400" fill="url(#cielo)"/>
+      <g fill="#fff">
+        <circle cx="118" cy="128" r="30"/>
+        <circle cx="158" cy="118" r="38"/>
+        <circle cx="196" cy="134" r="26"/>
+        <rect x="112" y="128" width="90" height="34" rx="17"/>
+      </g>
+      <path d="M0 296 C60 268 108 300 160 292 C214 284 258 258 300 268 L300 400 L0 400 Z" fill="#A8C64A"/>
+      <path d="M0 330 C68 306 116 340 176 330 C232 320 268 302 300 310 L300 400 L0 400 Z" fill="#7A9E1E"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ CHI SIAMO ============ -->
+<section id="chi-siamo" class="appare">
+  <div class="wrap">
+    <p class="etichetta">Chi siamo</p>
+    <h2>Una fondazione nata da un lascito</h2>
+    <p>Siamo una fondazione abruzzese nata nel 1987 da un lascito testamentario. Dal 2026 siamo iscritti al RUNTS come Ente del Terzo Settore.</p>
+    <p style="margin-top:14px">Promuoviamo la cultura della legalità, della pace e della non violenza, e sosteniamo reti di vicinato attivo come le banche del tempo.</p>
+    <a class="link-avanti" href="#">Leggi chi siamo &rsaquo;</a>
+  </div>
+</section>
+
+<!-- ============ PROGETTI ============ -->
+<section id="progetti" class="progetti terra appare">
+  <div class="wrap">
+    <p class="etichetta" style="color:#4A2A20">I nostri progetti</p>
+    <h2 style="margin-bottom:44px">Cosa stiamo facendo</h2>
+    <div class="due">
+
+      <article class="scheda">
+        <div class="foto arco"><span>[Foto: la sala con il pianoforte a coda, mascherata ad arco]</span></div>
+        <h3>Cantiere delle creatività</h3>
+        <p>Presso la nostra sede di Via delle Caserme <span class="dv">[DA VERIFICARE: civico]</span> organizziamo <span class="dv">[DA VERIFICARE: quali attività, per chi, con che frequenza]</span>.</p>
+        <a class="link-avanti" href="#">Scopri &rsaquo;</a>
+      </article>
+
+      <article class="scheda">
+        <div class="foto arco"><span>[Foto: l'edificio della RSA, mascherata ad arco]</span></div>
+        <h3>Costruzione di una RSA</h3>
+        <p>Il nostro progetto più ambizioso: una struttura sanitaria aperta alla ricerca, un luogo di comunità, cura e innovazione dedicato alla terza età.</p>
+        <p style="margin-top:10px;font-size:16px">A che punto siamo: <span class="dv">[DA VERIFICARE: stato dei lavori]</span></p>
+        <a class="link-avanti" href="#">Scopri &rsaquo;</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORIA ============ -->
+<section id="storia" class="storia appare">
+  <div class="wrap">
+    <p class="etichetta">La nostra storia</p>
+    <p>Nasciamo nel 1987 dal lascito di un parrocchiano a don Giuseppe Natoli, in nome di sua madre Clementina De Virgiliis. Dal 2025 un nuovo Consiglio guida la Fondazione.</p>
+    <a class="link-avanti" href="#">La nostra storia &rsaquo;</a>
+  </div>
+</section>
+
+<!-- ============ SOSTIENICI ============ -->
+<section id="sostienici" class="sostienici appare">
+  <div class="wrap">
+    <p class="etichetta">Sostienici</p>
+    <h2>Il tuo aiuto è fondamentale</h2>
+    <p>Con il 5x1000 non spendi nulla. Basta una firma nella dichiarazione dei redditi e il nostro codice fiscale.</p>
+
+    <div class="cf">
+      <strong id="codice">91011550687</strong>
+      <button class="copia" type="button" id="btn-copia">Copia il codice fiscale</button>
+      <span class="esito" id="esito" role="status" aria-live="polite"></span>
+    </div>
+
+    <p style="margin-top:26px;font-size:16px">Per la donazione con bonifico serve l'IBAN: <span class="dv">[DA VERIFICARE: IBAN intestato alla Fondazione]</span></p>
+    <a class="link-avanti" href="#">Tutti i modi per sostenerci &rsaquo;</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ CONTATTI / FOOTER ============ -->
+<footer id="contatti">
+  <div class="wrap">
+    <div class="recapiti">
+      <div>
+        <h3>Indirizzo</h3>
+        <p>Via delle Caserme <span class="dv">[DA VERIFICARE: civico]</span><br><span class="dv">[DA VERIFICARE: CAP e città]</span></p>
+      </div>
+      <div>
+        <h3>Scrivici</h3>
+        <p><a href="mailto:fondazionedevirgiliis@gmail.com">fondazionedevirgiliis@gmail.com</a><br>
+        PEC: fondazioneclementinadevirgiliis@pec.it</p>
+      </div>
+      <div>
+        <h3>Telefono</h3>
+        <p><span class="dv">[DA VERIFICARE: numero]</span></p>
+      </div>
+    </div>
+
+    <div class="coda">
+      <p style="max-width:none">Fondazione Clementina De Virgiliis — Ente del Terzo Settore · Codice fiscale 91011550687 · Iscritta al RUNTS Nazionale dal 2026</p>
+      <p style="max-width:none"><a href="#">Trasparenza</a><a href="#">Privacy</a><a href="#">Cookie</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// copia del codice fiscale
+const btn = document.getElementById('btn-copia');
+const esito = document.getElementById('esito');
+btn.addEventListener('click', async () => {
+  const cf = document.getElementById('codice').textContent.trim();
+  try {
+    await navigator.clipboard.writeText(cf);
+  } catch (e) {
+    const t = document.createElement('textarea');
+    t.value = cf; document.body.appendChild(t); t.select();
+    document.execCommand('copy'); t.remove();
+  }
+  esito.textContent = 'Copiato';
+  setTimeout(() => esito.textContent = '', 2500);
+});
+
+// comparsa in dissolvenza, disattivata se l'utente preferisce meno movimento
+const menoMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!menoMovimento && 'IntersectionObserver' in window) {
+  const osservatore = new IntersectionObserver((voci) => {
+    voci.forEach(v => { if (v.isIntersecting) { v.target.classList.add('visibile'); osservatore.unobserve(v.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.appare').forEach(el => osservatore.observe(el));
+} else {
+  document.querySelectorAll('.appare').forEach(el => el.classList.add('visibile'));
+}
+</script>
+</body>
+</html>
