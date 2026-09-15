@@ -1,3 +1,21 @@
+// menu mobile (hamburger)
+const hamburger = document.getElementById('hamburger');
+const menuMobile = document.getElementById('menu-mobile');
+if (hamburger && menuMobile) {
+  hamburger.addEventListener('click', () => {
+    const aperto = menuMobile.classList.toggle('aperto');
+    hamburger.setAttribute('aria-expanded', aperto ? 'true' : 'false');
+    document.body.style.overflow = aperto ? 'hidden' : '';
+  });
+  menuMobile.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      menuMobile.classList.remove('aperto');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
 // copia del codice fiscale (può essere presente più volte in pagina)
 document.querySelectorAll('.copia').forEach((btn) => {
   btn.addEventListener('click', async () => {
