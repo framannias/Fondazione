@@ -7,14 +7,17 @@
 <meta name="description" content="Indirizzo, email, PEC e modulo di contatto della Fondazione Clementina De Virgiliis.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header>
   <nav class="wrap nav" aria-label="Principale">
-    <a class="marchio" href="index.html">Fondazione Clementina De&nbsp;Virgiliis<span>Ente del Terzo Settore</span></a>
+    <a class="marchio" href="index.html">
+      <img class="logo-mark" src="img/logo.png" alt="Logo della Fondazione Clementina De Virgiliis">
+      Fondazione Clementina De&nbsp;Virgiliis<span>Ente del Terzo Settore</span>
+    </a>
     <ul class="menu">
       <li><a href="chi-siamo.html">Chi siamo</a></li>
       <li><a href="storia.html">La nostra storia</a></li>
@@ -22,9 +25,26 @@
       <li><a href="sostienici.html">Sostienici</a></li>
       <li><a href="contatti.html" aria-current="page">Contatti</a></li>
     </ul>
-    <a class="btn" href="sostienici.html">Sostienici</a>
+    <div class="nav-azioni">
+      <a class="btn" href="sostienici.html">Sostienici</a>
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="menu-mobile" aria-label="Apri il menu">
+        <span></span>
+      </button>
+    </div>
   </nav>
 </header>
+
+<div class="menu-mobile" id="menu-mobile">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="chi-siamo.html">Chi siamo</a></li>
+    <li><a href="storia.html">La nostra storia</a></li>
+    <li><a href="progetti.html">Progetti</a></li>
+    <li><a href="sostienici.html">Sostienici</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <a class="btn" href="sostienici.html">Sostienici</a>
+</div>
 
 <main>
 

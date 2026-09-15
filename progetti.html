@@ -4,17 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Progetti — Fondazione Clementina De Virgiliis</title>
-<meta name="description" content="Il Cantiere delle creatività e la costruzione della RSA: i progetti della Fondazione Clementina De Virgiliis.">
+<meta name="description" content="Sede centrale e Villa Pace: i progetti della Fondazione Clementina De Virgiliis.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header>
   <nav class="wrap nav" aria-label="Principale">
-    <a class="marchio" href="index.html">Fondazione Clementina De&nbsp;Virgiliis<span>Ente del Terzo Settore</span></a>
+    <a class="marchio" href="index.html">
+      <img class="logo-mark" src="img/logo.png" alt="Logo della Fondazione Clementina De Virgiliis">
+      Fondazione Clementina De&nbsp;Virgiliis<span>Ente del Terzo Settore</span>
+    </a>
     <ul class="menu">
       <li><a href="chi-siamo.html">Chi siamo</a></li>
       <li><a href="storia.html">La nostra storia</a></li>
@@ -22,27 +25,44 @@
       <li><a href="sostienici.html">Sostienici</a></li>
       <li><a href="contatti.html">Contatti</a></li>
     </ul>
-    <a class="btn" href="sostienici.html">Sostienici</a>
+    <div class="nav-azioni">
+      <a class="btn" href="sostienici.html">Sostienici</a>
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="menu-mobile" aria-label="Apri il menu">
+        <span></span>
+      </button>
+    </div>
   </nav>
 </header>
 
+<div class="menu-mobile" id="menu-mobile">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="chi-siamo.html">Chi siamo</a></li>
+    <li><a href="storia.html">La nostra storia</a></li>
+    <li><a href="progetti.html">Progetti</a></li>
+    <li><a href="sostienici.html">Sostienici</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <a class="btn" href="sostienici.html">Sostienici</a>
+</div>
+
 <main>
 
-<section class="testata progetti terra">
+<section class="testata progetti">
   <div class="wrap">
     <p class="occhiello" style="color:#4A2A20">Cosa stiamo facendo</p>
     <h1>I nostri progetti</h1>
   </div>
 </section>
 
-<section id="cantiere" class="appare">
+<section id="sede" class="appare">
   <div class="wrap">
     <div class="due">
       <div class="foto arco" style="aspect-ratio:4/5">
-        <img src="img/sede-centrale.jpg" alt="La sede della Fondazione, dove si svolge il Cantiere delle creatività" loading="lazy">
+        <img src="img/sede-centrale.jpg" alt="La sede centrale della Fondazione" loading="lazy">
       </div>
       <div>
-        <h2>Cantiere delle creatività</h2>
+        <h2>Sede centrale</h2>
         <p>Presso la nostra sede di Via delle Caserme <span class="dv">DA VERIFICARE: civico</span> organizziamo <span class="dv">DA VERIFICARE: quali attività</span>.</p>
         <dl class="scheda-dettaglio">
           <dt>Cosa facciamo</dt>
@@ -61,11 +81,11 @@
   </div>
 </section>
 
-<section id="rsa" class="appare" style="background:var(--rosa)">
+<section id="villa-pace" class="appare">
   <div class="wrap">
     <div class="due">
       <div>
-        <h2>Costruzione di una RSA</h2>
+        <h2>Villa Pace</h2>
         <p>Il nostro progetto più ambizioso: una struttura sanitaria aperta alla ricerca, un luogo di comunità, cura e innovazione dedicato alla terza età.</p>
         <dl class="scheda-dettaglio">
           <dt>Dove</dt>
