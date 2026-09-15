@@ -26,7 +26,7 @@ body{
   background:var(--crema);
   -webkit-font-smoothing:antialiased;
 }
-h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.16}
+h1,h2,h3{font-family:'Lora',Georgia,serif;font-weight:600;line-height:1.2}
 p{max-width:var(--misura)}
 a{color:inherit}
 img{max-width:100%;display:block}
@@ -45,7 +45,7 @@ header{
   border-bottom:1px solid rgba(26,22,20,.09);
 }
 .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:12px 0}
-.marchio{font-family:'Fraunces',serif;font-size:19px;line-height:1.2;letter-spacing:.005em;text-decoration:none;display:flex;align-items:center;gap:14px}
+.marchio{font-family:'Lora',serif;font-size:19px;line-height:1.2;letter-spacing:.005em;text-decoration:none;display:flex;align-items:center;gap:14px}
 .marchio span{display:block;font-family:'Work Sans',sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--nero-70);font-weight:500}
 .logo-mark{width:52px;height:52px;flex:none;object-fit:contain}
 .menu{display:flex;gap:28px;font-size:15.5px}
@@ -79,7 +79,7 @@ header{
 .menu-mobile.aperto{display:block}
 .menu-mobile ul{display:flex;flex-direction:column;gap:4px}
 .menu-mobile a{
-  display:block;font-family:'Fraunces',serif;font-size:26px;
+  display:block;font-family:'Lora',serif;font-size:26px;
   text-decoration:none;padding:16px 4px;border-bottom:1px solid rgba(26,22,20,.12);
 }
 .menu-mobile .btn{margin-top:28px;width:100%;text-align:center;font-size:18px;padding:18px}
@@ -102,10 +102,10 @@ header{
 .testata p{margin-top:16px;font-size:19px}
 
 /* ---------- hero home ---------- */
-.hero{background:var(--rosa);padding-top:clamp(36px,6vw,64px);position:relative;overflow:hidden}
+.hero{background:linear-gradient(180deg, var(--rosa) 0%, var(--rosa) 55%, var(--crema) 100%);padding-top:clamp(36px,6vw,64px);position:relative;overflow:hidden}
 .hero::before{
   content:"";position:absolute;top:-8%;left:22%;width:56%;height:132%;
-  background:var(--crema);border-radius:999px 999px 0 0;opacity:.5;z-index:0;
+  background:var(--crema);border-radius:999px 999px 0 0;opacity:.4;z-index:0;
 }
 .hero .wrap{position:relative;z-index:1}
 .hero .griglia{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center}
@@ -143,6 +143,8 @@ h3{font-size:22px;margin-bottom:10px}
 .attivita-card .icona{width:40px;height:40px;margin-bottom:16px}
 .attivita-card h3{font-size:19px;margin-bottom:8px}
 .attivita-card p{font-size:15.5px;color:var(--nero-70)}
+.attivita-card:nth-child(7){grid-column:2 / 3}
+@media (max-width:1100px){.attivita-card:nth-child(7){grid-column:auto}}
 @media (max-width:860px){.griglia-attivita{grid-template-columns:1fr}}
 @media (min-width:861px) and (max-width:1100px){.griglia-attivita{grid-template-columns:repeat(2,1fr)}}
 
@@ -152,16 +154,17 @@ h3{font-size:22px;margin-bottom:10px}
 .timeline{max-width:760px;margin:0 auto}
 .tappa{display:grid;grid-template-columns:110px 1fr;gap:24px;text-align:left;padding:26px 0;border-top:1px solid rgba(26,22,20,.14)}
 .tappa:first-child{border-top:none}
-.tappa .anno{font-family:'Fraunces',serif;font-size:27px;color:var(--terracotta-scuro)}
+.tappa .anno{font-family:'Lora',serif;font-size:27px;color:var(--terracotta-scuro)}
 .tappa .anno.vuoto{color:var(--nero-70);font-style:italic;font-size:19px}
 
 /* ---------- sostienici ---------- */
-.sostienici{background:var(--rosa)}
+.sostienici{background:var(--crema)}
+.sostienici .pannello{background:var(--rosa);padding:clamp(28px,4vw,48px);margin-top:8px}
 .cf{
   display:flex;align-items:center;gap:16px;flex-wrap:wrap;
   background:var(--crema);padding:22px 26px;margin:26px 0 0;width:fit-content;
 }
-.cf strong{font-size:29px;letter-spacing:.05em;font-weight:500;font-family:'Fraunces',serif}
+.cf strong{font-size:29px;letter-spacing:.05em;font-weight:600;font-family:'Lora',serif}
 .copia{font:inherit;font-size:15px;cursor:pointer;background:var(--terracotta);color:var(--crema);border:1.5px solid var(--terracotta);padding:10px 18px}
 .copia:hover{background:var(--terracotta-scuro);border-color:var(--terracotta-scuro)}
 .esito{font-size:15px;color:#3F6B1E;min-height:1.2em}
@@ -192,7 +195,7 @@ h3{font-size:22px;margin-bottom:10px}
 .scheda .foto:has(img){padding:0;display:block;background:none}
 
 /* ---------- footer scuro ---------- */
-footer{background:var(--nero);color:var(--crema-70);padding:clamp(48px,6vw,76px) 0 28px}
+footer{background:linear-gradient(180deg, var(--crema) 0%, var(--nero) 14%);color:var(--crema-70);padding:clamp(64px,7vw,92px) 0 28px}
 footer a{color:var(--crema)}
 .recapiti{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:40px}
 .recapiti h3{font-family:'Work Sans',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;color:var(--crema)}
