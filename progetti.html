@@ -19,14 +19,18 @@
       Fondazione Clementina De&nbsp;Virgiliis<span>Ente del Terzo Settore</span>
     </a>
     <ul class="menu">
-      <li><a href="chi-siamo.html">Chi siamo</a></li>
-      <li><a href="storia.html">La nostra storia</a></li>
-      <li><a href="progetti.html" aria-current="page">Progetti</a></li>
-      <li><a href="sostienici.html">Sostienici</a></li>
-      <li><a href="contatti.html">Contatti</a></li>
+      <li><a href="chi-siamo.html" data-it="Chi siamo" data-en="About us">Chi siamo</a></li>
+      <li><a href="storia.html" data-it="La nostra storia" data-en="Our story">La nostra storia</a></li>
+      <li><a href="progetti.html" aria-current="page" data-it="Progetti" data-en="Projects">Progetti</a></li>
+      <li><a href="trasparenza.html" data-it="Trasparenza" data-en="Transparency">Trasparenza</a></li>
+      <li><a href="sostienici.html" data-it="Sostienici" data-en="Support us">Sostienici</a></li>
+      <li><a href="contatti.html" data-it="Contatti" data-en="Contact">Contatti</a></li>
     </ul>
     <div class="nav-azioni">
-      <a class="btn" href="sostienici.html">Sostienici</a>
+      <a class="btn" href="sostienici.html" data-it="Sostienici" data-en="Support us">Sostienici</a>
+      <button class="lang-switch" type="button" aria-label="Switch to English">
+        <span class="bandiera">🇬🇧</span><span class="lang-label">EN</span>
+      </button>
       <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="menu-mobile" aria-label="Apri il menu">
         <span></span>
       </button>
@@ -36,14 +40,18 @@
 
 <div class="menu-mobile" id="menu-mobile">
   <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="chi-siamo.html">Chi siamo</a></li>
-    <li><a href="storia.html">La nostra storia</a></li>
-    <li><a href="progetti.html">Progetti</a></li>
-    <li><a href="sostienici.html">Sostienici</a></li>
-    <li><a href="contatti.html">Contatti</a></li>
+    <li><a href="index.html" data-it="Home" data-en="Home">Home</a></li>
+    <li><a href="chi-siamo.html" data-it="Chi siamo" data-en="About us">Chi siamo</a></li>
+    <li><a href="storia.html" data-it="La nostra storia" data-en="Our story">La nostra storia</a></li>
+    <li><a href="progetti.html" data-it="Progetti" data-en="Projects">Progetti</a></li>
+    <li><a href="trasparenza.html" data-it="Trasparenza" data-en="Transparency">Trasparenza</a></li>
+    <li><a href="sostienici.html" data-it="Sostienici" data-en="Support us">Sostienici</a></li>
+    <li><a href="contatti.html" data-it="Contatti" data-en="Contact">Contatti</a></li>
   </ul>
-  <a class="btn" href="sostienici.html">Sostienici</a>
+  <a class="btn" href="sostienici.html" data-it="Sostienici" data-en="Support us">Sostienici</a>
+  <button class="lang-switch" type="button" aria-label="Switch to English">
+    <span class="bandiera">🇬🇧</span><span class="lang-label">EN</span>
+  </button>
 </div>
 
 <main>
@@ -55,43 +63,144 @@
   </div>
 </section>
 
-<section id="sede" class="appare">
+<section id="sede" class="appare filone">
   <div class="wrap">
+    <p class="etichetta">Primo filone · Via delle Caserme, 69 — Pescara</p>
     <div class="due">
       <div class="foto arco" style="aspect-ratio:4/5">
         <img src="img/sede-centrale.jpg" alt="La sede centrale della Fondazione" loading="lazy">
       </div>
       <div>
-        <h2>Sede centrale</h2>
-        <p>Presso la nostra sede di Via delle Caserme <span class="dv">DA VERIFICARE: civico</span> organizziamo <span class="dv">DA VERIFICARE: quali attività</span>.</p>
-        <dl class="scheda-dettaglio">
-          <dt>Cosa facciamo</dt>
-          <dd><span class="dv">DA VERIFICARE</span></dd>
-          <dt>Per chi</dt>
-          <dd><span class="dv">DA VERIFICARE</span></dd>
-          <dt>Quando</dt>
-          <dd><span class="dv">DA VERIFICARE: giorni e frequenza</span></dd>
-          <dt>Chi conduce le attività</dt>
-          <dd><span class="dv">DA VERIFICARE</span></dd>
-          <dt>Come partecipare</dt>
-          <dd><span class="dv">DA VERIFICARE: gratuito o a offerta, iscrizione, contatto</span></dd>
-        </dl>
+        <h2>Attività presso la Sede centrale</h2>
+        <p>Nella nostra sede di Via delle Caserme, 69 a Pescara costruiamo un programma di attività rivolte alla comunità: dall'ascolto psicologico alla formazione, dalle borse di studio alla cultura per la terza età e i giovani. Ogni attività qui sotto è un'area in cui stiamo lavorando: apri la sua scheda per i dettagli.</p>
       </div>
+    </div>
+
+    <div class="attivita-link-griglia">
+      <a class="attivita-link" href="#att-ascolto">
+        <span class="nome">Ascolto e sostegno psicologico</span>
+        <span class="riga">Centri per la prevenzione e la soluzione dei disagi psicologici</span>
+      </a>
+      <a class="attivita-link" href="#att-riabilitazione">
+        <span class="nome">Riabilitazione psico-sociale</span>
+        <span class="riga">Percorsi di recupero e reinserimento nella vita sociale</span>
+      </a>
+      <a class="attivita-link" href="#att-formazione">
+        <span class="nome">Formazione e alternanza scuola-lavoro</span>
+        <span class="riga">Percorsi per famiglie, operatori, insegnanti e studenti</span>
+      </a>
+      <a class="attivita-link" href="#att-borse">
+        <span class="nome">Borse di studio</span>
+        <span class="riga">Sostegno allo studio e diffusione di pubblicazioni</span>
+      </a>
+      <a class="attivita-link" href="#att-ricerca">
+        <span class="nome">Studio e ricerca</span>
+        <span class="riga">Collaborazioni con università ed enti di ricerca</span>
+      </a>
+      <a class="attivita-link" href="#att-cultura">
+        <span class="nome">Cultura e tempo libero</span>
+        <span class="riga">Accoglienza, intrattenimento e promozione culturale</span>
+      </a>
+    </div>
+
+    <div class="attivita-dettaglio" id="att-ascolto">
+      <p class="etichetta">Ascolto e sostegno psicologico</p>
+      <h3>Ascolto e sostegno psicologico</h3>
+      <p>Centri di ascolto per la prevenzione e la soluzione dei disagi e dei disturbi psicologici, anche attraverso l'assistenza spirituale, morale e materiale.</p>
+      <dl class="scheda-dettaglio">
+        <dt>Per chi</dt>
+        <dd><span class="dv">DA VERIFICARE</span></dd>
+        <dt>Quando</dt>
+        <dd><span class="dv">DA VERIFICARE: giorni e frequenza</span></dd>
+        <dt>Chi conduce l'attività</dt>
+        <dd><span class="dv">DA VERIFICARE</span></dd>
+        <dt>Come partecipare</dt>
+        <dd><span class="dv">DA VERIFICARE: gratuito o a offerta, iscrizione, contatto</span></dd>
+      </dl>
+    </div>
+
+    <div class="attivita-dettaglio" id="att-riabilitazione">
+      <p class="etichetta">Riabilitazione psico-sociale</p>
+      <h3>Riabilitazione psico-sociale</h3>
+      <p>Percorsi di riabilitazione e riattivazione psico-sociale, con metodologie terapeutiche rivolte a persone con disturbi psicologici, per un recupero nella vita sociale.</p>
+      <dl class="scheda-dettaglio">
+        <dt>Per chi</dt>
+        <dd><span class="dv">DA VERIFICARE</span></dd>
+        <dt>Quando</dt>
+        <dd><span class="dv">DA VERIFICARE: giorni e frequenza</span></dd>
+        <dt>Come partecipare</dt>
+        <dd><span class="dv">DA VERIFICARE</span></dd>
+      </dl>
+    </div>
+
+    <div class="attivita-dettaglio" id="att-formazione">
+      <p class="etichetta">Formazione e alternanza scuola-lavoro</p>
+      <h3>Formazione e alternanza scuola-lavoro</h3>
+      <p>Percorsi formativi e informativi per famiglie con persone bisognose di assistenza psicologica, per operatori sociosanitari e religiosi, per insegnanti di ogni ordine e grado — e percorsi di alternanza scuola-lavoro per studenti delle scuole del territorio.</p>
+      <dl class="scheda-dettaglio">
+        <dt>Per chi</dt>
+        <dd><span class="dv">DA VERIFICARE: famiglie, operatori, scuole coinvolte</span></dd>
+        <dt>Quando</dt>
+        <dd><span class="dv">DA VERIFICARE: calendario</span></dd>
+        <dt>Come partecipare</dt>
+        <dd><span class="dv">DA VERIFICARE: convenzioni con gli istituti, iscrizione</span></dd>
+      </dl>
+    </div>
+
+    <div class="attivita-dettaglio" id="att-borse">
+      <p class="etichetta">Borse di studio</p>
+      <h3>Borse di studio</h3>
+      <p>Istituzione di borse di studio, anche in collaborazione con enti e istituzioni con finalità analoghe, e diffusione di pubblicazioni.</p>
+      <dl class="scheda-dettaglio">
+        <dt>Destinatari</dt>
+        <dd><span class="dv">DA VERIFICARE: requisiti</span></dd>
+        <dt>Importo e numero di borse</dt>
+        <dd><span class="dv">DA VERIFICARE</span></dd>
+        <dt>Come partecipare</dt>
+        <dd><span class="dv">DA VERIFICARE: bando, scadenze</span></dd>
+      </dl>
+    </div>
+
+    <div class="attivita-dettaglio" id="att-ricerca">
+      <p class="etichetta">Studio e ricerca</p>
+      <h3>Studio e ricerca</h3>
+      <p>Attività di studio e ricerca scientifica di particolare interesse sociale, direttamente o in collaborazione con università, enti di ricerca o altre fondazioni.</p>
+      <dl class="scheda-dettaglio">
+        <dt>Ambiti</dt>
+        <dd><span class="dv">DA VERIFICARE</span></dd>
+        <dt>Collaborazioni attive</dt>
+        <dd><span class="dv">DA VERIFICARE</span></dd>
+      </dl>
+    </div>
+
+    <div class="attivita-dettaglio" id="att-cultura">
+      <p class="etichetta">Cultura e tempo libero</p>
+      <h3>Cultura e tempo libero</h3>
+      <p>Attività di accoglienza, intrattenimento, formazione e promozione culturale rivolte a giovani e terza età con problematiche di adattamento psicosociale.</p>
+      <dl class="scheda-dettaglio">
+        <dt>Per chi</dt>
+        <dd><span class="dv">DA VERIFICARE</span></dd>
+        <dt>Quando</dt>
+        <dd><span class="dv">DA VERIFICARE: giorni e frequenza</span></dd>
+        <dt>Come partecipare</dt>
+        <dd><span class="dv">DA VERIFICARE</span></dd>
+      </dl>
     </div>
   </div>
 </section>
 
-<section id="villa-pace" class="appare">
+<section id="villa-pace" class="appare filone">
   <div class="wrap">
+    <p class="etichetta">Secondo filone · San Salvatore, Rosciano (PE)</p>
     <div class="due">
       <div>
         <h2>Villa Pace</h2>
-        <p>Il nostro progetto più ambizioso: una struttura sanitaria aperta alla ricerca, un luogo di comunità, cura e innovazione dedicato alla terza età.</p>
+        <p>Centro di attività spirituali, sociali e di accoglienza, casa albergo per la terza età e la gioventù: il nostro progetto più ambizioso, una struttura aperta alla comunità, alla cura e all'innovazione.</p>
         <dl class="scheda-dettaglio">
           <dt>Dove</dt>
-          <dd><span class="dv">DA VERIFICARE: comune e località</span></dd>
+          <dd>San Salvatore, Comune di Rosciano (PE)</dd>
           <dt>A che punto siamo</dt>
-          <dd><span class="dv">DA VERIFICARE: stato dei lavori</span></dd>
+          <dd>Concessione edilizia rilasciata nel 1994, lavori proseguiti nel 2011. <span class="dv">DA VERIFICARE: stato attuale dei lavori</span></dd>
           <dt>Posti previsti</dt>
           <dd><span class="dv">DA VERIFICARE</span></dd>
           <dt>Servizi previsti</dt>
@@ -119,7 +228,7 @@
     <div class="recapiti">
       <div>
         <h3>Indirizzo</h3>
-        <p>Via delle Caserme <span class="dv">DA VERIFICARE: civico</span><br><span class="dv">DA VERIFICARE: CAP e città</span></p>
+        <p>Via delle Caserme, 69<br>Pescara <span class="dv">DA VERIFICARE: CAP</span></p>
       </div>
       <div>
         <h3>Scrivici</h3>
