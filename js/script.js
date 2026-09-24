@@ -57,6 +57,29 @@ if (!menoMovimento && 'IntersectionObserver' in window) {
   document.querySelectorAll('.appare, .tappa').forEach(el => el.classList.add('visibile'));
 }
 
+// timeline della storia: la linea verticale si "disegna" seguendo lo scroll
+const timelineEl = document.querySelector('.timeline');
+if (timelineEl) {
+  if (menoMovimento) {
+    timelineEl.style.setProperty('--progresso-linea', '1');
+  } else {
+    let tick = false;
+    const aggiornaLinea = () => {
+      const rect = timelineEl.getBoundingClientRect();
+      const partenza = window.innerHeight * 0.85;
+      let progresso = (partenza - rect.top) / rect.height;
+      progresso = Math.max(0, Math.min(1, progresso));
+      timelineEl.style.setProperty('--progresso-linea', progresso.toFixed(3));
+      tick = false;
+    };
+    aggiornaLinea();
+    window.addEventListener('scroll', () => {
+      if (!tick) { tick = true; requestAnimationFrame(aggiornaLinea); }
+    }, { passive: true });
+    window.addEventListener('resize', aggiornaLinea);
+  }
+}
+
 // selettore lingua IT/EN: scambia il testo degli elementi che hanno
 // sia data-it che data-en; la scelta resta salvata per le pagine successive
 const langBtns = document.querySelectorAll('.lang-switch');
