@@ -80,6 +80,34 @@ if (timelineEl) {
   }
 }
 
+// numeri animati (statistiche): contano da 0 al valore reale quando
+// la sezione entra nello schermo
+const numeriStatistica = document.querySelectorAll('.statistica-numero[data-target]');
+if (numeriStatistica.length) {
+  const formatta = (el, valore) => valore.toLocaleString(el.getAttribute('data-format') === 'anno' ? 'it-IT' : 'it-IT', {useGrouping:false});
+  const animaNumero = (el) => {
+    const target = parseInt(el.getAttribute('data-target'), 10);
+    if (menoMovimento) { el.textContent = formatta(el, target); return; }
+    const durata = 1100;
+    const partenza = performance.now();
+    const passo = (adesso) => {
+      const t = Math.min(1, (adesso - partenza) / durata);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = formatta(el, Math.round(target * eased));
+      if (t < 1) requestAnimationFrame(passo);
+    };
+    requestAnimationFrame(passo);
+  };
+  if ('IntersectionObserver' in window) {
+    const osservatoreNumeri = new IntersectionObserver((voci) => {
+      voci.forEach(v => { if (v.isIntersecting) { animaNumero(v.target); osservatoreNumeri.unobserve(v.target); } });
+    }, { threshold: .4 });
+    numeriStatistica.forEach(el => osservatoreNumeri.observe(el));
+  } else {
+    numeriStatistica.forEach(el => animaNumero(el));
+  }
+}
+
 // selettore lingua IT/EN: scambia il testo degli elementi che hanno
 // sia data-it che data-en; la scelta resta salvata per le pagine successive
 const langBtns = document.querySelectorAll('.lang-switch');
@@ -121,3 +149,35 @@ if (formContatti) {
     window.location.href = `mailto:fondazionedevirgiliis@gmail.com?subject=Messaggio dal sito&body=${corpo}`;
   });
 }
+
+
+// attività (home): elenco a sinistra, scheda a destra
+(function(){
+  const voci = Array.from(document.querySelectorAll('.attivita-voce'));
+  const pannelli = Array.from(document.querySelectorAll('.attivita-pannello'));
+  if (!voci.length) return;
+  const seleziona = (k, focus) => {
+    voci.forEach((v, i) => { v.setAttribute('aria-selected', i === k); v.tabIndex = i === k ? 0 : -1; });
+    pannelli.forEach((p, i) => { p.hidden = i !== k; });
+    if (focus) voci[k].focus();
+  };
+  voci.forEach((v, k) => {
+    v.addEventListener('click', () => seleziona(k, false));
+    v.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); seleziona((k + 1) % voci.length, true); }
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); seleziona((k - 1 + voci.length) % voci.length, true); }
+    });
+  });
+})();
+
+
+// progetti: foto di Villa Pace da scorrere
+(function(){
+  const pista = document.getElementById('pr-pista');
+  if (!pista) return;
+  const frecce = document.getElementById('pr-frecce');
+  const aggiorna = () => { frecce.hidden = pista.scrollWidth <= pista.clientWidth + 4; };
+  aggiorna(); window.addEventListener('resize', aggiorna);
+  document.getElementById('pr-avn').addEventListener('click', () => pista.scrollBy({left: pista.clientWidth * .7, behavior: 'smooth'}));
+  document.getElementById('pr-ind').addEventListener('click', () => pista.scrollBy({left: -pista.clientWidth * .7, behavior: 'smooth'}));
+})();
