@@ -15,15 +15,14 @@
 <header>
   <nav class="wrap nav" aria-label="Principale">
     <a class="marchio" href="index.html">
-      <img class="logo-mark" src="img/logo.png" alt="Logo della Fondazione Clementina De Virgiliis">
-      Fondazione Clementina De&nbsp;Virgiliis<span>Ente del Terzo Settore</span>
+      <img class="logo-mark" src="img/logo-icona-v2.png" alt="Logo della Fondazione Clementina De Virgiliis">
+      <span class="marchio-testo">Fondazione<br>Clementina De&nbsp;Virgiliis</span>
     </a>
     <ul class="menu">
       <li><a href="chi-siamo.html" data-it="Chi siamo" data-en="About us">Chi siamo</a></li>
       <li><a href="storia.html" data-it="La nostra storia" data-en="Our story">La nostra storia</a></li>
       <li><a href="progetti.html" data-it="Progetti" data-en="Projects">Progetti</a></li>
       <li><a href="trasparenza.html" data-it="Trasparenza" data-en="Transparency">Trasparenza</a></li>
-      <li><a href="sostienici.html" data-it="Sostienici" data-en="Support us">Sostienici</a></li>
       <li><a href="contatti.html" aria-current="page" data-it="Contatti" data-en="Contact">Contatti</a></li>
     </ul>
     <div class="nav-azioni">
@@ -45,7 +44,6 @@
     <li><a href="storia.html" data-it="La nostra storia" data-en="Our story">La nostra storia</a></li>
     <li><a href="progetti.html" data-it="Progetti" data-en="Projects">Progetti</a></li>
     <li><a href="trasparenza.html" data-it="Trasparenza" data-en="Transparency">Trasparenza</a></li>
-    <li><a href="sostienici.html" data-it="Sostienici" data-en="Support us">Sostienici</a></li>
     <li><a href="contatti.html" data-it="Contatti" data-en="Contact">Contatti</a></li>
   </ul>
   <a class="btn" href="sostienici.html" data-it="Sostienici" data-en="Support us">Sostienici</a>
@@ -56,38 +54,29 @@
 
 <main>
 
-<section class="testata">
+<section class="cs-testata">
   <div class="wrap">
-    <p class="occhiello">Parliamone</p>
     <h1>I nostri recapiti</h1>
   </div>
 </section>
 
-<section class="appare">
-  <div class="wrap recapiti-pagina">
+<section class="ct-blocco">
+  <div class="ct-dati">
+    <p class="etichetta">Dove siamo</p>
+    <h2>Vieni a trovarci</h2>
+    <div class="ct-riga"><span class="ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><small>Indirizzo</small><span>Via delle Caserme, 69 — Pescara</span></div></div>
+    <div class="ct-riga"><span class="ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><small>Email</small><span><a href="mailto:fondazionedevirgiliis@gmail.com">fondazionedevirgiliis@gmail.com</a></span></div></div>
+    <div class="ct-riga"><span class="ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><div><small>PEC</small><span>fondazioneclementinadevirgiliis@pec.it</span></div></div>
+    <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Via+delle+Caserme+69,+Pescara" target="_blank" rel="noopener">Come arrivare</a>
+  </div>
+  <div class="ct-mappa"><iframe title="Mappa della sede centrale, Via delle Caserme 69, Pescara" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Via+delle+Caserme+69,+Pescara&output=embed"></iframe><div class="ct-tag"><b>Sede centrale</b><br>Via delle Caserme, 69</div></div>
+</section>
 
-    <div>
-      <dl class="scheda-dettaglio" style="margin-top:0">
-        <dt>Indirizzo</dt>
-        <dd>Via delle Caserme, 69<br>Pescara <span class="dv">DA VERIFICARE: CAP</span></dd>
-        <dt>Email</dt>
-        <dd><a href="mailto:fondazionedevirgiliis@gmail.com">fondazionedevirgiliis@gmail.com</a></dd>
-        <dt>PEC</dt>
-        <dd>fondazioneclementinadevirgiliis@pec.it</dd>
-        <dt>Telefono</dt>
-        <dd><span class="dv">DA VERIFICARE</span></dd>
-        <dt>Quando ci trovi in sede</dt>
-        <dd><span class="dv">DA VERIFICARE: giorni e orari di apertura</span></dd>
-      </dl>
-
-      <div class="mappa">
-        <span>[Mappa: da inserire con Google Maps o OpenStreetMap, appena disponibile l'indirizzo completo]</span>
-      </div>
-    </div>
-
-    <div>
-      <p class="etichetta">Scrivici</p>
-      <form class="form" id="form-contatti">
+<section class="appare ct-scrivici">
+  <div class="wrap">
+    <p class="etichetta">Scrivici</p>
+    <h2>Raccontaci come possiamo aiutarti</h2>
+    <form class="form" id="form-contatti">
         <label for="f-nome">Nome</label>
         <input type="text" id="f-nome" name="nome" required>
 
@@ -105,8 +94,6 @@
         <button class="btn" type="submit">Invia messaggio</button>
         <p style="margin-top:12px;font-size:14px;color:var(--nero-70)">Al momento il modulo apre un'email precompilata. Quando si sceglie la piattaforma del sito, va collegato a un invio diretto.</p>
       </form>
-    </div>
-
   </div>
 </section>
 
@@ -117,16 +104,12 @@
     <div class="recapiti">
       <div>
         <h3>Indirizzo</h3>
-        <p>Via delle Caserme, 69<br>Pescara <span class="dv">DA VERIFICARE: CAP</span></p>
+        <p>Via delle Caserme, 69<br>Pescara</p>
       </div>
       <div>
         <h3>Scrivici</h3>
         <p><a href="mailto:fondazionedevirgiliis@gmail.com">fondazionedevirgiliis@gmail.com</a><br>
         PEC: fondazioneclementinadevirgiliis@pec.it</p>
-      </div>
-      <div>
-        <h3>Telefono</h3>
-        <p><span class="dv">DA VERIFICARE: numero</span></p>
       </div>
     </div>
 
