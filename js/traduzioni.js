@@ -21,7 +21,7 @@ window.TRADUZIONI={
 "Sede centrale": "Main office",
 "Presso la nostra sede di Via delle Caserme, 69 a Pescara.": "At our premises in Via delle Caserme, 69 in Pescara.",
 "Scopri ›": "Discover ›",
-"Il nostro progetto più ambizioso: una struttura sanitaria aperta alla ricerca, un luogo di comunità, cura e innovazione dedicato alla terza età.": "Our most ambitious project: a healthcare facility open to research, a place of community, care and innovation dedicated to older adults.",
+"Il nostro progetto più ambizioso: una struttura sanitaria aperta alla ricerca, un luogo di comunità, cura e innovazione dedicato al benessere del cervello ed alla longevità.": "Our most ambitious project: a healthcare facility open to research, a place of community, care and innovation dedicated to brain wellbeing and longevity.",
 "Trasparenza": "Transparency",
 "Un ente che si può verificare": "An organisation you can verify",
 "Statuto, dati di costituzione e bilanci annuali: qui trovi i documenti che raccontano come siamo fatti e come usiamo le risorse che ci vengono affidate.": "Articles of association, incorporation data and annual financial statements: here you will find the documents that show who we are and how we use the resources entrusted to us.",
