@@ -115,6 +115,31 @@ function applicaLingua(lang) {
   document.querySelectorAll('[data-it][data-en]').forEach(el => {
     el.textContent = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-it');
   });
+  // testi senza data-en: si usa il dizionario in js/traduzioni.js
+  const TR = window.TRADUZIONI || {};
+  document.querySelectorAll('body *').forEach(el => {
+    if (el.hasAttribute('data-en') || el.closest('svg') || el.tagName === 'SCRIPT') return;
+    if (el.dataset.itHtml === undefined) {
+      const k = el.innerHTML.replace(/\s+/g, ' ').trim();
+      if (!Object.prototype.hasOwnProperty.call(TR, k)) return;
+      el.dataset.itHtml = el.innerHTML;
+    }
+    if (lang === 'en') {
+      const k = el.dataset.itHtml.replace(/\s+/g, ' ').trim();
+      el.innerHTML = TR[k];
+    } else {
+      el.innerHTML = el.dataset.itHtml;
+    }
+  });
+  const TA = window.TRADUZIONI_ATTR || {};
+  document.querySelectorAll('[aria-label]').forEach(el => {
+    if (el.classList.contains('lang-switch')) return;
+    if (el.dataset.itAria === undefined) {
+      if (!(el.getAttribute('aria-label') in TA)) return;
+      el.dataset.itAria = el.getAttribute('aria-label');
+    }
+    el.setAttribute('aria-label', lang === 'en' ? TA[el.dataset.itAria] : el.dataset.itAria);
+  });
   document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'it');
   langBtns.forEach(b => {
     b.querySelector('.lang-label').textContent = lang === 'en' ? 'IT' : 'EN';
