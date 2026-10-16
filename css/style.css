@@ -573,7 +573,7 @@ footer a{color:var(--nero)}
 .pr-villa{background:#3E7DA3;color:#fff;padding:clamp(48px,7vw,88px) 0}
 .pr-villa .etichetta,.pr-villa h2,.pr-villa-testo{color:#fff}
 .pr-villa .etichetta{opacity:.85}
-.pr-villa-testo{font-size:20px;line-height:1.65;max-width:62ch}
+.pr-villa-testo{font-size:20px;line-height:1.65;max-width:none}
 .pr-car{margin-top:34px}
 .pr-pista{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin}
 .pr-pista figure{margin:0;flex:0 0 min(80%,560px);scroll-snap-align:start;background:#fff;color:var(--nero);border-radius:22px;overflow:hidden;box-shadow:0 22px 44px -22px rgba(26,22,20,.6)}
@@ -672,3 +672,26 @@ html{scroll-padding-top:90px}
 .pv-corpo a{color:var(--terracotta-scuro);text-decoration:underline;text-underline-offset:3px}
 .pv-agg{font-size:15.5px;color:var(--nero-70)}
 .pv-corpo{max-width:none}.pv-corpo>*{max-width:780px}
+.pr-cards--villa{margin-top:clamp(28px,4vw,44px)}
+
+/* ---- Adattamento telefono ---- */
+html,body{overflow-x:hidden}
+img,iframe{max-width:100%}
+@media (max-width:600px){
+  .nav{gap:10px;padding:12px 0}
+  .marchio{font-size:15px;gap:9px;min-width:0;flex:1 1 auto}
+  .logo-mark{width:38px;height:38px}
+  .nav-azioni{gap:8px;flex:none}
+  .lang-switch{padding:8px 10px}
+  .pr-villa-testo{font-size:18px}
+  .pr-pista figure{flex-basis:86%}
+  .cs-testata h1{font-size:clamp(30px,9vw,40px)}
+}
+@media (max-width:600px){
+  .hero{min-height:0}
+  .hero-contenuto{position:relative;inset:auto;padding:28px 16px 32px}
+  .hero-pannello{min-height:0;padding:28px 22px}
+  .hero-pannello p{font-size:17px}
+  .hero-logo{width:min(120px,36%)}
+}
+@media (max-width:600px){footer p,.ct-blocco p,.ct-riga{overflow-wrap:anywhere}}
