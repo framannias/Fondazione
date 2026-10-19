@@ -113,7 +113,8 @@ if (numeriStatistica.length) {
 const langBtns = document.querySelectorAll('.lang-switch');
 function applicaLingua(lang) {
   document.querySelectorAll('[data-it][data-en]').forEach(el => {
-    el.textContent = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-it');
+    const v = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-it');
+    if (v.indexOf('<') !== -1) el.innerHTML = v; else el.textContent = v;
   });
   // testi senza data-en: si usa il dizionario in js/traduzioni.js
   const TR = window.TRADUZIONI || {};
