@@ -773,3 +773,19 @@ footer.piede a:hover{text-decoration:underline}
 .pr-nuovo-img img{border-radius:10px;box-shadow:0 10px 26px -14px rgba(26,22,20,.5)}
 .pr-nuovo-tx{align-self:start}
 @media (max-width:700px){.pr-nuovo-img{padding:16px 16px 0}}
+
+/* ---- telefono: regole finali (devono stare in fondo) ---- */
+@media (max-width:700px){
+  .pr-nuovo{grid-template-columns:minmax(0,1fr)}
+  .pr-nuovo-img{max-width:420px;margin-inline:auto;padding:16px 16px 0}
+  .pr-nuovo-tx{padding:8px 20px 24px;align-self:auto;min-width:0}
+  .pr-nuovo-tx p,.pr-nuovo-tx h3{overflow-wrap:anywhere}
+  .pr-nuovo-azioni .pr-nuovo-btn{flex:1 1 100%;text-align:center}
+  .pr-calendario{padding:20px 16px 22px}
+}
+@media (max-width:480px){
+  .sost-griglia,.sost-testo,.sost-carte,.sost-carta{min-width:0}
+  .sost-dato{overflow-wrap:anywhere;font-size:clamp(18px,6vw,28px)}
+  .sost-dato--iban{font-size:clamp(14px,4.6vw,20px);letter-spacing:.02em}
+}
+.pr-nuovo-btn{line-height:1.3}
