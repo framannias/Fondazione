@@ -1,0 +1,221 @@
+// menu mobile (hamburger)
+const hamburger = document.getElementById('hamburger');
+const menuMobile = document.getElementById('menu-mobile');
+if (hamburger && menuMobile) {
+  hamburger.addEventListener('click', () => {
+    const aperto = menuMobile.classList.toggle('aperto');
+    hamburger.setAttribute('aria-expanded', aperto ? 'true' : 'false');
+    document.body.style.overflow = aperto ? 'hidden' : '';
+  });
+  menuMobile.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      menuMobile.classList.remove('aperto');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
+// copia del codice fiscale (può essere presente più volte in pagina)
+document.querySelectorAll('.copia').forEach((btn) => {
+  btn.addEventListener('click', async () => {
+    const targetId = btn.getAttribute('data-target') || 'codice';
+    const cf = document.getElementById(targetId).textContent.trim();
+    try {
+      await navigator.clipboard.writeText(cf);
+    } catch (e) {
+      const t = document.createElement('textarea');
+      t.value = cf; document.body.appendChild(t); t.select();
+      document.execCommand('copy'); t.remove();
+    }
+    const esito = btn.parentElement.querySelector('.esito');
+    if (esito) {
+      esito.textContent = 'Copiato';
+      setTimeout(() => esito.textContent = '', 2500);
+    }
+  });
+});
+
+// comparsa in dissolvenza (sezioni) e comparsa progressiva della timeline,
+// disattivate se l'utente preferisce meno movimento
+const menoMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!menoMovimento && 'IntersectionObserver' in window) {
+  const osservatore = new IntersectionObserver((voci) => {
+    voci.forEach(v => { if (v.isIntersecting) { v.target.classList.add('visibile'); osservatore.unobserve(v.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.appare').forEach(el => osservatore.observe(el));
+
+  // le tappe della timeline compaiono una alla volta, con un piccolo ritardo in sequenza
+  document.querySelectorAll('.tappa').forEach((tappa, i) => {
+    tappa.style.transitionDelay = `${Math.min(i, 4) * 90}ms`;
+  });
+  const osservatoreTappe = new IntersectionObserver((voci) => {
+    voci.forEach(v => { if (v.isIntersecting) { v.target.classList.add('visibile'); osservatoreTappe.unobserve(v.target); } });
+  }, { threshold: .2 });
+  document.querySelectorAll('.tappa').forEach(el => osservatoreTappe.observe(el));
+} else {
+  document.querySelectorAll('.appare, .tappa').forEach(el => el.classList.add('visibile'));
+}
+
+// timeline della storia: la linea verticale si "disegna" seguendo lo scroll
+const timelineEl = document.querySelector('.timeline');
+if (timelineEl) {
+  if (menoMovimento) {
+    timelineEl.style.setProperty('--progresso-linea', '1');
+  } else {
+    let tick = false;
+    const aggiornaLinea = () => {
+      const rect = timelineEl.getBoundingClientRect();
+      const partenza = window.innerHeight * 0.85;
+      let progresso = (partenza - rect.top) / rect.height;
+      progresso = Math.max(0, Math.min(1, progresso));
+      timelineEl.style.setProperty('--progresso-linea', progresso.toFixed(3));
+      tick = false;
+    };
+    aggiornaLinea();
+    window.addEventListener('scroll', () => {
+      if (!tick) { tick = true; requestAnimationFrame(aggiornaLinea); }
+    }, { passive: true });
+    window.addEventListener('resize', aggiornaLinea);
+  }
+}
+
+// numeri animati (statistiche): contano da 0 al valore reale quando
+// la sezione entra nello schermo
+const numeriStatistica = document.querySelectorAll('.statistica-numero[data-target]');
+if (numeriStatistica.length) {
+  const formatta = (el, valore) => valore.toLocaleString(el.getAttribute('data-format') === 'anno' ? 'it-IT' : 'it-IT', {useGrouping:false});
+  const animaNumero = (el) => {
+    const target = parseInt(el.getAttribute('data-target'), 10);
+    if (menoMovimento) { el.textContent = formatta(el, target); return; }
+    const durata = 1100;
+    const partenza = performance.now();
+    const passo = (adesso) => {
+      const t = Math.min(1, (adesso - partenza) / durata);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = formatta(el, Math.round(target * eased));
+      if (t < 1) requestAnimationFrame(passo);
+    };
+    requestAnimationFrame(passo);
+  };
+  if ('IntersectionObserver' in window) {
+    const osservatoreNumeri = new IntersectionObserver((voci) => {
+      voci.forEach(v => { if (v.isIntersecting) { animaNumero(v.target); osservatoreNumeri.unobserve(v.target); } });
+    }, { threshold: .4 });
+    numeriStatistica.forEach(el => osservatoreNumeri.observe(el));
+  } else {
+    numeriStatistica.forEach(el => animaNumero(el));
+  }
+}
+
+// selettore lingua IT/EN: scambia il testo degli elementi che hanno
+// sia data-it che data-en; la scelta resta salvata per le pagine successive
+const langBtns = document.querySelectorAll('.lang-switch');
+function applicaLingua(lang) {
+  document.querySelectorAll('[data-it][data-en]').forEach(el => {
+    const v = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-it');
+    if (v.indexOf('<') !== -1) el.innerHTML = v; else el.textContent = v;
+  });
+  // testi senza data-en: si usa il dizionario in js/traduzioni.js
+  const TR = window.TRADUZIONI || {};
+  document.querySelectorAll('body *').forEach(el => {
+    if (el.hasAttribute('data-en') || el.closest('svg') || el.tagName === 'SCRIPT') return;
+    if (el.dataset.itHtml === undefined) {
+      const k = el.innerHTML.replace(/\s+/g, ' ').trim();
+      if (!Object.prototype.hasOwnProperty.call(TR, k)) return;
+      el.dataset.itHtml = el.innerHTML;
+    }
+    if (lang === 'en') {
+      const k = el.dataset.itHtml.replace(/\s+/g, ' ').trim();
+      el.innerHTML = TR[k];
+    } else {
+      el.innerHTML = el.dataset.itHtml;
+    }
+  });
+  const TA = window.TRADUZIONI_ATTR || {};
+  document.querySelectorAll('[aria-label]').forEach(el => {
+    if (el.classList.contains('lang-switch')) return;
+    if (el.dataset.itAria === undefined) {
+      if (!(el.getAttribute('aria-label') in TA)) return;
+      el.dataset.itAria = el.getAttribute('aria-label');
+    }
+    el.setAttribute('aria-label', lang === 'en' ? TA[el.dataset.itAria] : el.dataset.itAria);
+  });
+  document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'it');
+  langBtns.forEach(b => {
+    b.querySelector('.lang-label').textContent = lang === 'en' ? 'IT' : 'EN';
+    b.querySelector('.bandiera').textContent = lang === 'en' ? '🇮🇹' : '🇬🇧';
+    b.setAttribute('aria-label', lang === 'en' ? 'Passa all\'italiano' : 'Switch to English');
+  });
+  try { localStorage.setItem('lingua-sito', lang); } catch (e) {}
+}
+if (langBtns.length) {
+  let linguaSalvata = 'it';
+  try { linguaSalvata = localStorage.getItem('lingua-sito') || 'it'; } catch (e) {}
+  applicaLingua(linguaSalvata);
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const attuale = document.documentElement.getAttribute('lang') === 'en' ? 'en' : 'it';
+      applicaLingua(attuale === 'en' ? 'it' : 'en');
+    });
+  });
+}
+
+// modulo di contatto: al momento non c'è un servizio collegato,
+// quindi si limita ad aprire un'email precompilata (mailto).
+// Da sostituire con un vero invio quando si sceglie una piattaforma.
+const formContatti = document.getElementById('form-contatti');
+if (formContatti) {
+  formContatti.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nome = document.getElementById('f-nome').value;
+    const email = document.getElementById('f-email').value;
+    const messaggio = document.getElementById('f-messaggio').value;
+    const corpo = encodeURIComponent(`${messaggio}\n\n— ${nome} (${email})`);
+    window.location.href = `mailto:fondazionedevirgiliis@gmail.com?subject=Messaggio dal sito&body=${corpo}`;
+  });
+}
+
+
+// attività (home): elenco a sinistra, scheda a destra
+(function(){
+  const voci = Array.from(document.querySelectorAll('.attivita-voce'));
+  const pannelli = Array.from(document.querySelectorAll('.attivita-pannello'));
+  if (!voci.length) return;
+  const seleziona = (k, focus) => {
+    voci.forEach((v, i) => { v.setAttribute('aria-selected', i === k); v.tabIndex = i === k ? 0 : -1; });
+    pannelli.forEach((p, i) => { p.hidden = i !== k; });
+    if (focus) voci[k].focus();
+  };
+  voci.forEach((v, k) => {
+    v.addEventListener('click', () => seleziona(k, false));
+    v.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); seleziona((k + 1) % voci.length, true); }
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); seleziona((k - 1 + voci.length) % voci.length, true); }
+    });
+  });
+})();
+
+
+// progetti: carosello Villa Pace
+(function(){
+  const pista = document.getElementById('pr-pista');
+  if (!pista) return;
+  const frecce = document.getElementById('pr-frecce');
+  const aggiorna = () => { frecce.hidden = pista.scrollWidth <= pista.clientWidth + 4; };
+  aggiorna(); window.addEventListener('resize', aggiorna);
+  document.getElementById('pr-avn').addEventListener('click', () => pista.scrollBy({left: pista.clientWidth * .7, behavior: 'smooth'}));
+  document.getElementById('pr-ind').addEventListener('click', () => pista.scrollBy({left: -pista.clientWidth * .7, behavior: 'smooth'}));
+})();
+
+
+// progetti: carosello Sede centrale
+(function(){
+  const pista = document.getElementById('pr-pista-sede');
+  if (!pista) return;
+  const frecce = document.getElementById('pr-frecce-sede');
+  const aggiorna = () => { frecce.hidden = pista.scrollWidth <= pista.clientWidth + 4; };
+  aggiorna(); window.addEventListener('resize', aggiorna);
+  document.getElementById('pr-avn-sede').addEventListener('click', () => pista.scrollBy({left: pista.clientWidth * .7, behavior: 'smooth'}));
+  document.getElementById('pr-ind-sede').addEventListener('click', () => pista.scrollBy({left: -pista.clientWidth * .7, behavior: 'smooth'}));
+})();
